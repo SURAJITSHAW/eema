@@ -58,10 +58,6 @@ include 'includes/session.php';
 
 
 // Function to generate hashed password
-function generateHash($password)
-{
-	return password_hash($password, PASSWORD_DEFAULT);
-}
 
 // Handle form submission
 if (isset($_POST['add'])) {
@@ -69,10 +65,11 @@ if (isset($_POST['add'])) {
 	// $firstname = $_POST['firstname'];
 
 	// $lastname = $_POST['lastname'];
+	$name = $_POST['name'];
 
 	$email = $_POST['email'];
 	$password_raw = $_POST['password']; // Raw password
-	$password = generateHash($password_raw); // Hashed password
+	$password = md5($password_raw); // Hashed password
 
 
 	// $name_member_firm = $_POST['name_member_firm'];
@@ -85,8 +82,8 @@ if (isset($_POST['add'])) {
 
 
 	// Insert query with placeholders
-	$sql = "INSERT INTO voters_tbl ( email, password_raw, password, zone, membership) 
-            VALUES ( '$email', '$password_raw', '$password', '$zone', '$membership')";
+	$sql = "INSERT INTO voters_tbl ( email, password_raw, password, zone, membership, management_team) 
+            VALUES ( '$email', '$password_raw', '$password', '$zone', '$membership', '$name')";
 	// $sql = "INSERT INTO voters_tbl (firstname, lastname, password_raw, password, name_member_firm, zone, membership, management_team) 
     //         VALUES ('$firstname', '$lastname', '$password_raw', '$password', '$name_member_firm', '$zone', '$membership', '$management_team')";
 

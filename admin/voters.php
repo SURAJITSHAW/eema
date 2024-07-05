@@ -113,6 +113,7 @@
                   <th>Organization</th>
 
                   <th>Zone</th>
+                  <th>Membership</th>
 
                   <th>Name</th>
 
@@ -136,16 +137,12 @@
 
                         <tr>
 
-                          <td>".$row['email']."</td>
-
-                          <td>".$row['name_member_firm']."</td>
-
-                          <td>".$row['zone']."</td>
-
-                          <td>".$row['management_team']."</td>
-
-                          <td>".$row['mobile']."</td>
-
+                            <td>".(!empty($row['email']) ? $row['email'] : 'N/A')."</td>
+                            <td>".(!empty($row['name_member_firm']) ? $row['name_member_firm'] : 'N/A')."</td>
+                            <td>".(!empty($row['zone']) ? $row['zone'] : 'N/A')."</td>
+                            <td>".(!empty($row['membership']) ? $row['membership'] : 'N/A')."</td>
+                            <td>".(!empty($row['management_team']) ? $row['management_team'] : 'N/A')."</td>
+                            <td>".(!empty($row['mobile']) ? $row['mobile'] : 'N/A')."</td>
                         </tr>
 
                       ";

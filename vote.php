@@ -53,51 +53,77 @@ if($completed_category){
 
 
 
-if($catUid != ''){
+// if($catUid != ''){
 
+//     $sqlV = $mysqli->query("SELECT id FROM vote_tbl WHERE voter_id = '{$voterId}' AND category_id = '{$catUid}'");
+
+//     if($sqlV->num_rows > 0){
+
+//         header('Location: home.php');die();
+
+//     }else{
+
+//         // ! surajit shaw
+//         // $sqlCat = $mysqli->query("SELECT id FROM nomination_category_tbl WHERE id = '{$catUid}' AND status = '1' {$que1} ORDER BY id ASC LIMIT 0,1");
+
+
+//         if ($membership === 'platinum') {
+//             $sqlCat = $mysqli->query("SELECT id FROM nomination_category_tbl WHERE id = '{$catUid}' AND status = '1' {$que1} ORDER BY id ASC LIMIT 0,1");
+//         } else {
+//             $sqlCat = $mysqli->query("SELECT id FROM nomination_category_tbl WHERE id = '{$catUid}' AND zone = '{$zone}' AND status = '1' {$que1} ORDER BY id ASC LIMIT 0,1");
+//         }
+        
+//         $resCat = $sqlCat->fetch_assoc();
+
+//         $currentCat = $resCat['id'];
+
+//     }
+
+// }else{
+
+//     // ! surajit shaw
+//     // $sqlCat = $mysqli->query("SELECT N.id FROM candidate_tbl AS   C INNER JOIN nomination_category_tbl AS N ON(C.category_id = N.id) WHERE N.zone IN('all', '{$zone}') AND N.status = '1' {$que} GROUP BY C.category_id ORDER BY N.id ASC LIMIT 0,1");
+
+//     if ($membership === 'platinum') {
+//         $sqlCat = $mysqli->query("SELECT N.id FROM candidate_tbl AS C INNER JOIN nomination_category_tbl AS N ON(C.category_id = N.id) WHERE N.status = '1' {$que} GROUP BY C.category_id ORDER BY N.id ASC LIMIT 0,1");
+//     } else {
+//         $sqlCat = $mysqli->query("SELECT N.id FROM candidate_tbl AS C INNER JOIN nomination_category_tbl AS N ON(C.category_id = N.id) WHERE N.zone = '{$zone}' AND N.status = '1' {$que} GROUP BY C.category_id ORDER BY N.id ASC LIMIT 0,1");
+//     }
+    
+
+//     $resCat = $sqlCat->fetch_assoc();
+
+//     $currentCat = $resCat['id'];
+
+//     $catUid = $currentCat;
+
+// }
+
+
+if ($catUid != '') {
     $sqlV = $mysqli->query("SELECT id FROM vote_tbl WHERE voter_id = '{$voterId}' AND category_id = '{$catUid}'");
-
     if($sqlV->num_rows > 0){
-
         header('Location: home.php');die();
-
-    }else{
-
-        // ! surajit shaw
-        // $sqlCat = $mysqli->query("SELECT id FROM nomination_category_tbl WHERE id = '{$catUid}' AND status = '1' {$que1} ORDER BY id ASC LIMIT 0,1");
-
-
+    } else {
         if ($membership === 'platinum') {
-            $sqlCat = $mysqli->query("SELECT id FROM nomination_category_tbl WHERE id = '{$catUid}' AND status = '1' {$que1} ORDER BY id ASC LIMIT 0,1");
+            $sqlCat = $mysqli->query("SELECT id FROM nomination_category_tbl WHERE id = '{$catUid}' AND (zone = 'all' OR zone = '{$zone}') AND status = '1' {$que1} ORDER BY id ASC LIMIT 0,1");
         } else {
             $sqlCat = $mysqli->query("SELECT id FROM nomination_category_tbl WHERE id = '{$catUid}' AND zone = '{$zone}' AND status = '1' {$que1} ORDER BY id ASC LIMIT 0,1");
         }
-        
         $resCat = $sqlCat->fetch_assoc();
-
         $currentCat = $resCat['id'];
-
     }
-
-}else{
-
-    // ! surajit shaw
-    // $sqlCat = $mysqli->query("SELECT N.id FROM candidate_tbl AS   C INNER JOIN nomination_category_tbl AS N ON(C.category_id = N.id) WHERE N.zone IN('all', '{$zone}') AND N.status = '1' {$que} GROUP BY C.category_id ORDER BY N.id ASC LIMIT 0,1");
-
+} else {
     if ($membership === 'platinum') {
-        $sqlCat = $mysqli->query("SELECT N.id FROM candidate_tbl AS C INNER JOIN nomination_category_tbl AS N ON(C.category_id = N.id) WHERE N.status = '1' {$que} GROUP BY C.category_id ORDER BY N.id ASC LIMIT 0,1");
+        $sqlCat = $mysqli->query("SELECT N.id FROM candidate_tbl AS C INNER JOIN nomination_category_tbl AS N ON(C.category_id = N.id) WHERE N.zone IN('all', '{$zone}') AND N.status = '1' {$que} GROUP BY C.category_id ORDER BY N.id ASC LIMIT 0,1");
     } else {
         $sqlCat = $mysqli->query("SELECT N.id FROM candidate_tbl AS C INNER JOIN nomination_category_tbl AS N ON(C.category_id = N.id) WHERE N.zone = '{$zone}' AND N.status = '1' {$que} GROUP BY C.category_id ORDER BY N.id ASC LIMIT 0,1");
     }
-    
-
     $resCat = $sqlCat->fetch_assoc();
-
     $currentCat = $resCat['id'];
-
     $catUid = $currentCat;
-
 }
+
 
 
 
