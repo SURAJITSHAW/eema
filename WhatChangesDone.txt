@@ -1,0 +1,6 @@
+1. NOTA
+
+    - if there's 2 or more candidates for a position add NOTA
+
+
+    

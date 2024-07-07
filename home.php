@@ -1,4 +1,4 @@
-<?php include_once ('process/_constant.php'); ?>
+<?php include_once('process/_constant.php'); ?>
 
 <?php
 
@@ -32,7 +32,7 @@ while ($v = $sqlStatus->fetch_assoc()) {
 
 <head>
 
-  <?php include_once ('inc/head.php'); ?>
+  <?php include_once('inc/head.php'); ?>
 
   <link href="assets/css/sidebars.css" rel="stylesheet">
 
@@ -148,13 +148,11 @@ while ($v = $sqlStatus->fetch_assoc()) {
 
       <div class="d-flex flex-column flex-shrink-0 text-bg-dark col-md-3 vpos">
 
-        <a href="/home.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
-          style="width: 100%; background: #fff; padding: 15px 0; border-right: 2px solid RGBA(33,37,41,var(--bs-bg-opacity,1))!important">
+        <a href="/home.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none" style="width: 100%; background: #fff; padding: 15px 0; border-right: 2px solid RGBA(33,37,41,var(--bs-bg-opacity,1))!important">
 
           <span class="fs-4" style="display: inline-block; margin: auto;">
 
-            <img src="assets/images/1589541348_YDHggT_EEMA_logo_Revised.jpg" class="img-fluid" alt="EEMA"
-              style="max-width: 200px;">
+            <img src="assets/images/1589541348_YDHggT_EEMA_logo_Revised.jpg" class="img-fluid" alt="EEMA" style="max-width: 200px;">
 
           </span>
 
@@ -166,14 +164,13 @@ while ($v = $sqlStatus->fetch_assoc()) {
 
           <?php if ($_SESSION['userData']['membership'] === 'platinum') { ?>
 
-          <h2
-            style="font-size: 14px; color: #000; font-weight: bold; text-transform: uppercase; margin-top: 2rem; padding: 10px; text-align: left;background: #fff;">
-            <i class="fa-solid fa-circle-chevron-right" style="color: #ff6b02;"></i> National Executive Committee
-          </h2>
+            <h2 style="font-size: 14px; color: #000; font-weight: bold; text-transform: uppercase; margin-top: 2rem; padding: 10px; text-align: left;background: #fff;">
+              <i class="fa-solid fa-circle-chevron-right" style="color: #ff6b02;"></i> National Executive Committee
+            </h2>
 
-          <?php
+            <?php
 
-          
+
 
             $catSql = $mysqli->query("SELECT id,position_type FROM nomination_category_tbl WHERE status = '1' AND zone = 'all'");
 
@@ -187,30 +184,30 @@ while ($v = $sqlStatus->fetch_assoc()) {
                 continue;
               }
 
-              ?>
+            ?>
 
               <li>
 
                 <a href="vote.php?uid=<?= base64_encode($catres['id']); ?>" class="nav-link text-white">
                   <span class="vstatus <?php if (in_array($catres['id'], $voteStatus)) {
-                    echo 'g';
-                  } else {
-                    echo 'r';
-                  } ?>">
+                                          echo 'g';
+                                        } else {
+                                          echo 'r';
+                                        } ?>">
                   </span>
                   <?= $catres['position_type']; ?>
                 </a>
 
               </li>
 
-            <?php }
+          <?php }
           } ?>
 
           <?php
 
           if ($userZone) {
 
-            echo '<h2 style="font-size: 14px; color: #000; font-weight: bold; text-transform: uppercase; margin-top: 2rem; padding: 10px; text-align: left;background: #fff;"><i class="fa-solid fa-circle-chevron-right" style="color: #ff6b02;"></i> Zonal Committees ('. $userZone. ')</h2>';
+            echo '<h2 style="font-size: 14px; color: #000; font-weight: bold; text-transform: uppercase; margin-top: 2rem; padding: 10px; text-align: left;background: #fff;"><i class="fa-solid fa-circle-chevron-right" style="color: #ff6b02;"></i> Zonal Committees (' . $userZone . ')</h2>';
 
 
 
@@ -226,26 +223,26 @@ while ($v = $sqlStatus->fetch_assoc()) {
                 continue;
               }
 
-              ?>
+          ?>
 
 
 
               <li>
 
                 <a href="vote.php?uid=<?= base64_encode($catresZ['id']); ?>" class="nav-link text-white"><span class="vstatus <?php if (in_array($catresZ['id'], $voteStatus)) {
-                    echo 'g';
-                  } else {
-                    echo 'r';
-                  } ?>">
-                  
-                </span> <?= $catresZ['position_type']; ?>
-                <?= ucfirst($catresZ['zone']); ?>
-                
+                                                                                                                                echo 'g';
+                                                                                                                              } else {
+                                                                                                                                echo 'r';
+                                                                                                                              } ?>">
+
+                  </span> <?= $catresZ['position_type']; ?>
+                  <?= ucfirst($catresZ['zone']); ?>
+
                 </a>
 
               </li>
 
-            <?php }
+          <?php }
           } ?>
 
         </ul>
@@ -254,8 +251,7 @@ while ($v = $sqlStatus->fetch_assoc()) {
 
           <form action="" method="post" class="text-center">
 
-            <i class="fa-solid fa-right-from-bracket"></i> <button type="submit" class="text-white"
-              style="background: none; outline: none; border: none; display: inline-block;">Sign out</button>
+            <i class="fa-solid fa-right-from-bracket"></i> <button type="submit" class="text-white" style="background: none; outline: none; border: none; display: inline-block;">Sign out</button>
 
             <input type="hidden" name="action" value="logout">
 
@@ -265,8 +261,7 @@ while ($v = $sqlStatus->fetch_assoc()) {
 
       </div>
 
-      <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white col-md-9"> <a href="/"
-          class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+      <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white col-md-9"> <a href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
 
           <svg class="bi pe-none me-2" width="30" height="24">
 
@@ -320,8 +315,7 @@ while ($v = $sqlStatus->fetch_assoc()) {
 
         <div class="start-btn text-center">
 
-          <button id="viewDetails" data-bs-toggle="modal" data-bs-target="#viewDetailsM">View Details</button><button
-            id="startVote">Start Voting</button>
+          <button id="viewDetails" data-bs-toggle="modal" data-bs-target="#viewDetailsM">View Details</button><button id="startVote">Start Voting</button>
 
         </div>
 
@@ -335,8 +329,7 @@ while ($v = $sqlStatus->fetch_assoc()) {
 
 
 
-  <div class="modal fade" id="viewDetailsM" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal fade" id="viewDetailsM" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
 
@@ -421,32 +414,22 @@ while ($v = $sqlStatus->fetch_assoc()) {
 
 
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
-    integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.css"
-    integrity="sha512-fxF1t7b0mpb/ytjBeSu/OpgXxCVcX5/O8AJGYvHaWmNfi/lYLtttitFK17K4iKBva4iU9dcZ+BIV7dyD/nDdSw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.css" integrity="sha512-fxF1t7b0mpb/ytjBeSu/OpgXxCVcX5/O8AJGYvHaWmNfi/lYLtttitFK17K4iKBva4iU9dcZ+BIV7dyD/nDdSw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
   <script src="assets/js/sidebars.js"></script>
 
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"
-    integrity="sha512-Yk47FuYNtuINE1w+t/KT4BQ7JaycTCcrvlSvdK/jry6Kcxqg5vN7/svVWCxZykVzzJHaxXk5T9jnFemZHSYgnw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js" integrity="sha512-Yk47FuYNtuINE1w+t/KT4BQ7JaycTCcrvlSvdK/jry6Kcxqg5vN7/svVWCxZykVzzJHaxXk5T9jnFemZHSYgnw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
 
       var h = window.innerHeight;
 
@@ -460,7 +443,7 @@ while ($v = $sqlStatus->fetch_assoc()) {
 
 
 
-    $(window).resize(function () {
+    $(window).resize(function() {
 
       var h = window.innerHeight;
 
@@ -482,7 +465,7 @@ while ($v = $sqlStatus->fetch_assoc()) {
 
 
 
-    $('#startVote').on('click', function () {
+    $('#startVote').on('click', function() {
 
       window.location.href = "vote.php";
 
